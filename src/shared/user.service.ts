@@ -37,6 +37,11 @@ export class UserService {
     }
   }
 
+  async findByPayload(payload: any) {
+    const { username } = payload;
+    return this.userModel.findOne({ username });
+  }
+
   private sanitizeUser(user: User) {
     return user.depopulate('password');
   }
